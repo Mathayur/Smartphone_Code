@@ -30,11 +30,18 @@ while True:
     print('Você tem 3 chances para confirmar sua senha corretamente\n')
     for i in range(1,4) :
         print(f'Tentativa {i}\n')
-        if get_pass() == pass_confirm():
-            print('Senhas Identicas\n')
+        password = get_pass()
+        confirmation = pass_confirm()
+        if password != confirmation and i == 3:
+            print('Erro em Terceira tentativa')
+            print('Refaça o processo novamente\n')
+            continue
+        elif password != confirmation:
+            print('Senhas Incorretas')
+            print('Tente Novamente\n')
+        else:
+            print('Senhas Identicas')
             print('Registro Finalizado')
             break
-    if get_pass() != pass_confirm() and i == 3:
-        print('Refaça o processo novamente\n')
-        continue
+    break
     
